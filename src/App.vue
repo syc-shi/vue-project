@@ -24,7 +24,7 @@ const handleSelect = (key: string, keyPath: string[]) => {
           @select="handleSelect"
         >
           <el-menu-item index="home">Home</el-menu-item>
-          <el-menu-item index="about">About</el-menu-item>
+          <el-menu-item index="demo">Demo</el-menu-item>
         </el-menu>
       </el-header>
       <el-container>

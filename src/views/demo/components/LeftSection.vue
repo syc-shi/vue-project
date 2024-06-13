@@ -1,18 +1,24 @@
 <template>
   <el-aside width="200px" class="left-section" :style="leftStyl">
-    <el-tree
-      style="max-width: 600px"
-      :data="data"
-      :props="defaultProps"
-      @node-click="handleNodeClick"
-    />
+    <el-menu>
+      <el-menu-item index="2">
+        <i class="el-icon-menu"></i>
+        <span slot="title">导航二</span>
+      </el-menu-item>
+      <el-menu-item index="3" disabled>
+        <i class="el-icon-document"></i>
+        <span slot="title">导航三</span>
+      </el-menu-item>
+      <el-menu-item index="4">
+        <i class="el-icon-setting"></i>
+        <span slot="title">导航四</span>
+      </el-menu-item>
+    </el-menu>
   </el-aside>
 </template>
 
 <script lang="ts" setup>
-import { computed } from "vue";
 import { useStore } from "vuex";
-import type { Tree } from "../../../store/type";
 const store = useStore();
 
 const windowHeight: number =
@@ -26,21 +32,6 @@ type Styl = {
 
 const leftStyl: Styl = {
   height: windowHeight - 80 + "px",
-};
-
-const data = computed(() => {
-  return store.state.treeData;
-});
-
-store.dispatch("actionGetTreeData");
-
-const handleNodeClick = (data: Tree) => {
-  store.commit("changeTreeId", { treeId: data.id });
-};
-
-const defaultProps = {
-  children: "children",
-  label: "label",
 };
 </script>
 <style scoped>

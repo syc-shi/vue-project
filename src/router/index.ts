@@ -6,8 +6,8 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path:'/home',
-      redirect:"/"
+      path: '/home',
+      redirect: "/"
     },
     {
       path: '/',
@@ -15,18 +15,18 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/about',
-      name: 'about',
+      path: '/demo',
+      name: 'demo',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/about/index.vue')
+      component: () => import('../views/demo/index.vue')
     }
   ]
 })
 
-router.beforeEach((to:any, from:any)=>{
-  store.commit("changeNav",{currentNav:to.name})
+router.beforeEach((to: any, from: any) => {
+  store.commit("changeNav", { currentNav: to.name })
   return true;
 })
 
