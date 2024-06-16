@@ -10,8 +10,7 @@ export interface Tree {
     children?: Tree[];
 }
 
-export type State = {
-    currentNav: string,
+export interface HomeState {
     treeId: string,
     tableData: TableInter[],
     treeData: Tree[]

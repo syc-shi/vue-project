@@ -11,8 +11,8 @@
 
 <script lang="ts" setup>
 import { computed } from "vue";
-import { useStore } from "vuex";
-import type { Tree } from "../../../store/type";
+import { useStore } from "@/store";
+import type { Tree } from "@/store/home/type";
 const store = useStore();
 
 const windowHeight: number =
@@ -29,7 +29,7 @@ const leftStyl: Styl = {
 };
 
 const data = computed(() => {
-  return store.state.treeData;
+  return store.state.home.treeData;
 });
 
 store.dispatch("actionGetTreeData");

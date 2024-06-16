@@ -1,25 +1,24 @@
 <template>
   <el-aside width="200px" class="left-section" :style="leftStyl">
     <el-menu>
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <span slot="title">导航二</span>
-      </el-menu-item>
-      <el-menu-item index="3" disabled>
-        <i class="el-icon-document"></i>
-        <span slot="title">导航三</span>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <i class="el-icon-setting"></i>
-        <span slot="title">导航四</span>
+      <el-menu-item v-for="item in navData" :index="item.id">
+        <el-icon>
+          <component :is="item.icon"></component>
+        </el-icon>
+        <span>{{ item.title }}</span>
       </el-menu-item>
     </el-menu>
   </el-aside>
 </template>
 
 <script lang="ts" setup>
-import { useStore } from "vuex";
+import { computed } from "vue";
+import { useStore } from "@/store";
 const store = useStore();
+
+const navData = computed(() => {
+  return store.state.navData;
+});
 
 const windowHeight: number =
   window.innerHeight ||
@@ -37,6 +36,9 @@ const leftStyl: Styl = {
 <style scoped>
 .left-section {
   border-right: 1px solid #eee;
-  padding: 20px;
+  padding: 20px 0 20px 20px;
+  .el-menu {
+    border-right-color: transparent;
+  }
 }
 </style>
